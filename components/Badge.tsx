@@ -3,13 +3,10 @@ import { FC } from "react";
 export type BadgeProps = {
   /**
    * Change the status of the badge.
-   * @param status - is used for the status
    */
   status: "positive" | "negative" | "neutral" | "error" | "warning"
 }
-/**
- * This is a commnent
- * */
+
 export const Badge: FC<BadgeProps> = ({ children, status = 'positive' }) => {
   return <>
     <span className={`badge ${status}`}>

@@ -1,4 +1,4 @@
-import { addParameters } from '@storybook/client-api';
+import { addParameters } from '@storybook/react';
 
 
 addParameters({
@@ -6,5 +6,6 @@ addParameters({
   docs: {
     prepareForInline: (storyFn) => storyFn(),
   },
+  inline: true,
   controls: { expanded: true }
 });
