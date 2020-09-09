@@ -1,36 +1,36 @@
-/*
-import React from 'react';
-import { API } from '@storybook/api';
-import { styled } from '@storybook/theming';
-import { Link } from '@storybook/router';
+import React, { useEffect, useState } from "react";
+import { API } from "@storybook/api";
+import { styled } from "@storybook/theming";
+import { Link } from "@storybook/router";
 import {
   SyntaxHighlighter,
   SyntaxHighlighterProps,
   SyntaxHighlighterRendererProps,
-  createSyntaxHighlighterElement,
-} from '@storybook/components';
+  createSyntaxHighlighterElement
+} from "@storybook/components";
 
-import { SourceBlock, LocationsMap } from '@storybook/source-loader';
-import { Story } from '@storybook/api/dist/lib/stories';
+import { SourceBlock, LocationsMap } from "@storybook/source-loader";
+import { Story } from "@storybook/api/dist/lib/stories";
+import { raw } from "@storybook/react";
 
 const StyledStoryLink = styled(Link)<{ to: string; key: string }>(({ theme }) => ({
-  display: 'block',
-  textDecoration: 'none',
+  display: "block",
+  textDecoration: "none",
   borderRadius: theme.appBorderRadius,
-  color: 'inherit',
+  color: "inherit",
   
-  '&:hover': {
-    background: theme.background.hoverable,
-  },
+  "&:hover": {
+    background: theme.background.hoverable
+  }
 }));
 
 const SelectedStoryHighlight = styled.div(({ theme }) => ({
   background: theme.background.hoverable,
-  borderRadius: theme.appBorderRadius,
+  borderRadius: theme.appBorderRadius
 }));
 
 const StyledSyntaxHighlighter = styled(SyntaxHighlighter)<SyntaxHighlighterProps>(({ theme }) => ({
-  fontSize: theme.typography.size.s2 - 1,
+  fontSize: theme.typography.size.s2 - 1
 }));
 
 const areLocationsEqual = (a: SourceBlock, b: SourceBlock): boolean =>
@@ -41,39 +41,48 @@ const areLocationsEqual = (a: SourceBlock, b: SourceBlock): boolean =>
 
 interface StoryPanelProps {
   api: API;
+  channel?: any
+  sources?: any;
+  getStory?: boolean
 }
 
 interface SourceParams {
   source: string;
   locationsMap: LocationsMap;
+  
 }
-export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
-  const [state, setState] = React.useState<SourceParams & { currentLocation?: SourceBlock }>({
-    source: 'loading source...',
-    locationsMap: {},
+
+export const StoryPanel: React.FC<StoryPanelProps> = ({ api, channel, sources, getStory }) => {
+  const [state, setState] = useState<SourceParams & { currentLocation?: SourceBlock }>({
+    source: "loading source...",
+    locationsMap: {}
   });
-  console.log(api)
-  console.log(api.getCurrentStoryData())
+  console.log(sources)
   const story: Story | undefined = api.getCurrentStoryData() as Story;
   const selectedStoryRef = React.useRef<HTMLDivElement>(null);
   React.useEffect(() => {
     if (story) {
-      console.log(story)
+      
       const {
         parameters: {
+          fileName,
           // @ts-ignore
-          storySource: { source, locationsMap } = { source: '', locationsMap: {} },
-        } = {},
+          storySource: { locationsMap } = { source: "", locationsMap: {} }
+        } = {}
       } = story;
+      
+      
+      let name = getStory ?  fileName.replace(/\.(tsx|jsx|js|ts|mdx)$/,'').replace(/\\/g, '/') : fileName.replace(/\.stories\.(tsx|jsx|js|ts|mdx)$/,'').replace(/\\/g, '/');
       const currentLocation = locationsMap
                               ? locationsMap[
                                   Object.keys(locationsMap).find((key: string) => {
-                                    const sourceLoaderId = key.split('--');
+                                    const sourceLoaderId = key.split("--");
                                     return story.id.endsWith(sourceLoaderId[sourceLoaderId.length - 1]);
                                   })
                                   ]
                               : undefined;
-      setState({ source, locationsMap, currentLocation });
+      setState({ source: sources[name], locationsMap, currentLocation });
+      
     }
   }, [story ? story.id : null]);
   React.useEffect(() => {
@@ -90,7 +99,7 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
             node,
             stylesheet,
             useInlineStyles,
-            key: `code-segement${i}`,
+            key: `code-segement${i}`
           })
       );
   
@@ -100,7 +109,7 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
                              useInlineStyles,
                              location,
                              id,
-                             refId,
+                             refId
                            }: SyntaxHighlighterRendererProps & { location: SourceBlock; id: string; refId?: string }) => {
     const first = location.startLoc.line - 1;
     const last = location.endLoc.line;
@@ -133,7 +142,7 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
       const last = location.endLoc.line;
       const { kind, refId } = story;
       // source loader ids are different from story id
-      const sourceIdParts = key.split('--');
+      const sourceIdParts = key.split("--");
       const id = api.storyId(kind, sourceIdParts[sourceIdParts.length - 1]);
       const start = createPart({ rows: rows.slice(lastRow, first), stylesheet, useInlineStyles });
       const storyPart = createStoryPart({ rows, stylesheet, useInlineStyles, location, id, refId });
@@ -154,7 +163,7 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
   const lineRenderer = ({
                           rows,
                           stylesheet,
-                          useInlineStyles,
+                          useInlineStyles
                         }: SyntaxHighlighterRendererProps): React.ReactNode => {
     // because of the usage of lineRenderer, all lines will be wrapped in a span
     // these spans will receive all classes on them for some reason
@@ -162,7 +171,7 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
     // this removed that list of classnames
     const myrows = rows.map(({ properties, ...rest }) => ({
       ...rest,
-      properties: { className: [] },
+      properties: { className: [] }
     }));
     
     if (!locationsMap || !Object.keys(locationsMap).length) {
@@ -185,4 +194,4 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api }) => {
         {source}
       </StyledSyntaxHighlighter>
   ) : null;
-};*/
+};

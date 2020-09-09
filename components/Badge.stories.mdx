@@ -1,5 +1,6 @@
 import { Meta, Story, ArgsTable, Canvas } from '@storybook/addon-docs/blocks';
 import { Badge }  from './Badge';
+import { Button }  from './Button';
 
 <Meta title="Badge" component={Badge}  />
 
@@ -27,6 +28,9 @@ with unique URLs and isolated snapshot tests.
 <Canvas>
   <Story name="negative">
     <Badge status="negative">negative</Badge>
+  </Story>
+  <Story name="negative">
+    <Button status="negative">Button</Button>
   </Story>
   <Story name="warning">
     <Badge status="warning">Warning</Badge>
