@@ -6,6 +6,5 @@ addParameters({
   docs: {
     prepareForInline: (storyFn) => storyFn(),
   },
-  inline: true,
   controls: { expanded: true }
 });
