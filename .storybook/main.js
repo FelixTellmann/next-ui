@@ -8,6 +8,7 @@ module.exports = {
     "@storybook/addon-essentials",
     '@storybook/addon-a11y',
     '@storybook/preset-scss',
+    '@storybook/addon-jest',
     './addon-sourcecode/register',
   ],
   webpackFinal: async (baseConfig, options) => {
