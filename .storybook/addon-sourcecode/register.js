@@ -8,6 +8,7 @@ import { StoryPanel } from "./StoryPanel";
 const ADDON_ID = "addon-sourcecode";
 const PANEL_ID = `${ADDON_ID}/panel`;
 const PANEL_ID2 = `${ADDON_ID}/panel2`;
+
 let currentId
 // give a unique name for the panel
 import { useParameter } from "@storybook/api";

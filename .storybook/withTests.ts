@@ -68,7 +68,6 @@ export const withTests = (userOptions: { results: any; filesExt?: string }) => {
     if (testFiles && Array.isArray(testFiles)) {
       emitAddTests({ kind, story: storyFn, testFiles, options });
     }
-    console.log(kind, options)
     return storyFn();
   };
 };

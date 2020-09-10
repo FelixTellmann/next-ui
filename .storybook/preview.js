@@ -13,9 +13,8 @@ addDecorator(
 
 addParameters({
   actions: { argTypesRegex: "^on[A-Z].*" },
-  docs: {
-    prepareForInline: (storyFn) => storyFn(),
-  },
   controls: { expanded: true },
+  previewTabs: { 'storybook/docs/panel': { index: -1 } },
+
 });
 

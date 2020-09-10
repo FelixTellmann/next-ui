@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState ,useContext } from "react";
 import { API } from "@storybook/api";
 import { styled } from "@storybook/theming";
 import { Link } from "@storybook/router";
@@ -8,10 +8,12 @@ import {
   SyntaxHighlighterRendererProps,
   createSyntaxHighlighterElement
 } from "@storybook/components";
+import { Meta, DocsContainer } from '@storybook/addon-docs/blocks';
 
 import { SourceBlock, LocationsMap } from "@storybook/source-loader";
 import { Story } from "@storybook/api/dist/lib/stories";
 import { raw } from "@storybook/react";
+import { DocsContext } from '@storybook/addon-docs/blocks';
 
 const StyledStoryLink = styled(Link)<{ to: string; key: string }>(({ theme }) => ({
   display: "block",
@@ -53,11 +55,11 @@ interface SourceParams {
 }
 
 export const StoryPanel: React.FC<StoryPanelProps> = ({ api, channel, sources, getStory }) => {
+  const context = useContext(DocsContext);
   const [state, setState] = useState<SourceParams & { currentLocation?: SourceBlock }>({
     source: "loading source...",
     locationsMap: {}
   });
-  console.log(sources)
   const story: Story | undefined = api.getCurrentStoryData() as Story;
   const selectedStoryRef = React.useRef<HTMLDivElement>(null);
   React.useEffect(() => {
@@ -71,7 +73,12 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api, channel, sources, g
         } = {}
       } = story;
       
+      // @ts-ignore
+      window.api = api
+      console.log(api.getChannel())
+  
       
+      console.log(context)
       let name = getStory ?  fileName.replace(/\.(tsx|jsx|js|ts|mdx)$/,'').replace(/\\/g, '/') : fileName.replace(/\.stories\.(tsx|jsx|js|ts|mdx)$/,'').replace(/\\/g, '/');
       const currentLocation = locationsMap
                               ? locationsMap[
