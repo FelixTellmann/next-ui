@@ -36,7 +36,6 @@ module.exports = {
       enforce: 'pre'
     });
     newConfig.plugins.push(new SourcePlugin());
-    console.log(newConfig.module.rules)
     return newConfig;
   },
   stories: [
