@@ -1,0 +1,57 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+  min-width: 360px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: Inter, sans-serif;
+  font-size: 1.6rem;
+}
+
+
+:root {
+  /*================ color ================*/
+  --color-black: #1c1c1c;
+  --color-dark-grey: #343434;
+  --color-black-rgb: 28, 28, 28;
+  --color-grey: #f0e8e7;
+  --color-white: #fff;
+  --color-red: #ff5a5f;
+  --color-green: #41af4b;
+  --color-blue: #2ec4b6;
+  --color-yellow: #fb0;
+
+  /*================ typography ================*/
+  --font: 'Merriweather', -apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue, sans-serif;
+  --headings: heading, -apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue, sans-serif;
+
+  /*================ Borders/Shadows ================*/
+  --round-border-radius: 45% 52.5% 42.5% 42.5%;
+  /*================ spacing ================*/
+  --max-width: 160rem;
+  --gap-tiny: 0.4rem;
+  --gap-small: 0.8rem;
+  --gap: 1.6rem;
+  --header-height: 108px;
+  @include responsive-min(830px) {
+    --header-height: 60px;
+  }
+
+  /*================ Z-Index ================*/
+
+  --z-header: 1000;
+
+  /*================ Transition / effects ================*/
+  --fast-transition: 0.1s ease-out;
+  --med-transition: 0.2s ease-out;
+}
