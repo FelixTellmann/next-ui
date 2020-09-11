@@ -7,20 +7,12 @@ module.exports = {
   addons: [
     "@storybook/addon-links",/*
     '@storybook/addon-docs/register',*/
+    '@storybook/addon-docs',
     "@storybook/addon-essentials",
-    {
-      name: '@storybook/addon-docs',
-      options: {
-        sourceLoaderOptions: {
-          injectStoryParameters: true,
-          parser: 'typescript'
-        },
-      },
-    },
     '@storybook/addon-a11y',
     '@storybook/preset-scss',
-    '@storybook/addon-jest',
-    '@storybook/addon-storysource',
+    '@storybook/addon-jest',/*
+    '@storybook/addon-storysource',*/
     './addon-sourcecode/register',
   ],
   webpackFinal: async (baseConfig, options) => {

@@ -1,9 +1,8 @@
-// .storybook/my-addon/register.js
-
-import { raw } from "@storybook/react";
 import React from "react";
-import addons, { types } from "@storybook/addons";
+import addons from "@storybook/addons";
 import { StoryPanel } from "./StoryPanel";
+import { makeDecorator } from '@storybook/addons';
+
 
 const ADDON_ID = "addon-sourcecode";
 const PANEL_ID = `${ADDON_ID}/panel`;
@@ -46,3 +45,20 @@ addons.register(ADDON_ID, (api) => {
     render: ({ active, key }) => (active ? <StoryPanel getStory sources={sources} channel={addons.getChannel()} key={key} api={api} /> : null),
   });
 });
+
+
+
+export default makeDecorator({
+  name: 'withSomething',
+  parameterName: 'something',
+  wrapper: (storyFn, context, { parameters }) => {
+/*    console.log(parameters)
+    console.log(storyFn())
+    // Do something with `parameters`, which are set via { something: ... }
+    console.log(context)*/
+    // Note you may alter the story output if you like.
+    // Although generally that's not advised.
+
+    return storyFn(context);
+  }
+})

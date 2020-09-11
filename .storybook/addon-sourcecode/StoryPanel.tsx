@@ -1,4 +1,4 @@
-import React, { useEffect, useState ,useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { API } from "@storybook/api";
 import { styled } from "@storybook/theming";
 import { Link } from "@storybook/router";
@@ -11,7 +11,6 @@ import {
 
 import { SourceBlock, LocationsMap } from "@storybook/source-loader";
 import { Story } from "@storybook/api/dist/lib/stories";
-
 
 const StyledStoryLink = styled(Link)<{ to: string; key: string }>(({ theme }) => ({
   display: "block",
@@ -53,11 +52,14 @@ interface SourceParams {
 }
 
 export const StoryPanel: React.FC<StoryPanelProps> = ({ api, channel, sources, getStory }) => {
-
+  
   const [state, setState] = useState<SourceParams & { currentLocation?: SourceBlock }>({
     source: "loading source...",
     locationsMap: {}
   });
+  
+  /* TODO Continue from here!!!*/
+  channel.on("storybook/docs/snippet-rendered", (id, newItem) => { console.log(id, newItem); });
   const story: Story | undefined = api.getCurrentStoryData() as Story;
   const selectedStoryRef = React.useRef<HTMLDivElement>(null);
   React.useEffect(() => {
@@ -72,11 +74,12 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api, channel, sources, g
       } = story;
       
       // @ts-ignore
-      window.api = api
+      window.api = api;
       // @ts-ignore
-      console.log(api.getCurrentParameter()?.docs?.source)
+      console.log(api.getCurrentParameter()?.docs?.source);
       
-      let name = getStory ?  fileName.replace(/\.(tsx|jsx|js|ts|mdx)$/,'').replace(/\\/g, '/') : fileName.replace(/\.stories\.(tsx|jsx|js|ts|mdx)$/,'').replace(/\\/g, '/');
+      let name = getStory ? fileName.replace(/\.(tsx|jsx|js|ts|mdx)$/, "").replace(/\\/g, "/") : fileName.replace(/\.stories\.(tsx|jsx|js|ts|mdx)$/, "")
+          .replace(/\\/g, "/");
       const currentLocation = locationsMap
                               ? locationsMap[
                                   Object.keys(locationsMap).find((key: string) => {
@@ -89,6 +92,7 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api, channel, sources, g
       
     }
   }, [story ? story.id : null]);
+  
   React.useEffect(() => {
     if (selectedStoryRef.current) {
       selectedStoryRef.current.scrollIntoView();
