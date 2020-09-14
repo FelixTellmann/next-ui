@@ -46,6 +46,12 @@ export const _App: FC<AppProps> = ({ pageProps, Component }) => {
       <style jsx>{`
         main {
           min-height: calc(100vh - 12rem);
+          width: 100%;
+          max-width: var(--max-width-content);
+          display: flex;
+          flex-direction: column;
+          margin: auto;
+          padding: var(--gap);
         }
       `}</style>
     </>

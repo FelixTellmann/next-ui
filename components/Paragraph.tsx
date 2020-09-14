@@ -33,6 +33,7 @@ export const Paragraph: FC<ParagraphProps> = ({ children, center, small, noMargi
           ${noMargin ? "margin: 0;" : ""}
           ${center ? "text-align: center;" : ""}
           ${secondary ? "color: var(--color-secondary);" : ""}
+          
           small {
             font-size: var(--small);
           }

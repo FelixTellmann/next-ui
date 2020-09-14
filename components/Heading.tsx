@@ -1,7 +1,8 @@
 import { CSSProperties, FC } from "react";
 import { Property } from "csstype";
+import { GenericThemeProps, parseGenericThemePropsToStyledJSX } from "../lib/GenericThemeProps";
 
-type HeadingProps = {
+type HeadingProps = GenericThemeProps & {
   center?: boolean;
   noMargin?: boolean;
   secondary?: boolean;
@@ -17,23 +18,7 @@ type HeadingProps = {
   className?: string;
 };
 
-export const Heading: FC<HeadingProps> = ({
-  children,
-  className = "",
-  h1 = true,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  as,
-  center,
-  weight,
-  noMargin,
-  secondary,
-  style = {},
-  ...props
-}) => {
+export const Heading: FC<HeadingProps> = ({ children, className = "", h1 = true, h2, h3, h4, h5, h6, as, center, weight, noMargin, secondary, style = {}, ...props }) => {
   h6 && ((h1 = h2 = h3 = h4 = h5 = false), (className += " h6"), !as && (as = "h6"));
   h5 && ((h1 = h2 = h3 = h4 = h6 = false), (className += " h5"), !as && (as = "h5"));
   h4 && ((h1 = h2 = h3 = h5 = h6 = false), (className += " h4"), !as && (as = "h4"));
@@ -77,47 +62,71 @@ export const Heading: FC<HeadingProps> = ({
           {children}
         </h6>
       )}
-      <style jsx global>{`
-        .h1 {
+      <style jsx>{`
+        @import "styles/mixins";
+
+        :global(.h1) {
           font-size: var(--h1);
           font-weight: 700;
           line-height: 1.1;
           margin: 0 0 10px 0;
         }
 
-        .h2 {
+        :global(.h2) {
           font-size: var(--h2);
           font-weight: 700;
           line-height: 1.2;
           margin: 0 0 10px 0;
         }
 
-        .h3 {
+        :global(.h3) {
           font-size: var(--h3);
           font-weight: 700;
           line-height: 1.3;
           margin: 0 0 10px 0;
         }
 
-        .h4 {
+        :global(.h4) {
           font-size: var(--h4);
           font-weight: 700;
           line-height: 1.4;
           margin: 0 0 10px 0;
         }
 
-        .h5 {
+        :global(.h5) {
           font-size: var(--h5);
           font-weight: 700;
           line-height: 1.4;
           margin: 0 0 10px 0;
         }
 
-        .h6 {
+        :global(.h6) {
           font-size: var(--h6);
-          font-weight: 700;
+          font-weight: 600;
           line-height: 1.4;
           margin: 0 0 10px 0;
+          display: flex;
+          align-items: center;
+          white-space: nowrap;
+          word-break: keep-all;
+        }
+
+        .h1,
+        .h2,
+        .h3,
+        .h4,
+        .h5,
+        .h6 {
+          @include responsive-min(600px) {
+            ${parseGenericThemePropsToStyledJSX(props, "tablet-up")}
+          }
+          @include responsive-min(900px) {
+            ${parseGenericThemePropsToStyledJSX(props, "small-up")}
+          }
+          @include responsive-min(1200px) {
+            ${parseGenericThemePropsToStyledJSX(props, "desktop-up")}
+          }
+          ${parseGenericThemePropsToStyledJSX(props, "mobile-up")}
         }
       `}</style>
     </>

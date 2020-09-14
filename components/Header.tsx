@@ -47,7 +47,6 @@ export const Header: FC<HeaderProps> = ({ logo, nav, socialNav, darkMode, onDark
               </NavButton>
             ))}
           </div>
-          <div className="social-nav-group"></div>
           <div className="toggle-group">
             {darkMode ? (
               <NavButton icon secondary onClick={onDarkModeToggle} ml="var(--gap)">
@@ -63,7 +62,7 @@ export const Header: FC<HeaderProps> = ({ logo, nav, socialNav, darkMode, onDark
                   xmlns="http://www.w3.org/2000/svg"
                   style={{ filter: `drop-shadow( 0 0 3px rgb(240, 255, 50, .85))` }}
                 >
-                  <circle cx="12" cy="12" r="5" />
+                  <circle cx="12" cy="12" r="5"></circle>
                   <line x1="12" y1="1" x2="12" y2="3" />
                   <line x1="12" y1="21" x2="12" y2="23" />
                   <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
@@ -102,6 +101,12 @@ export const Header: FC<HeaderProps> = ({ logo, nav, socialNav, darkMode, onDark
           top: 0;
           backdrop-filter: saturate(180%) blur(2rem);
           color: var(--color-header);
+          margin-top: 3.2rem;
+          margin-bottom: 3.2rem;
+        }
+        :global(.dark-mode .header) {
+          backdrop-filter: saturate(100%) blur(2rem);
+          background-color: rgba(23, 25, 35, 0.6);
         }
         .nav {
           width: 100%;
@@ -110,7 +115,6 @@ export const Header: FC<HeaderProps> = ({ logo, nav, socialNav, darkMode, onDark
           display: flex;
           align-items: center;
           justify-content: space-between;
-          grid-area: nav;
           margin: auto;
           padding: var(--gap);
         }

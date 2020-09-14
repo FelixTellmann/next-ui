@@ -1,18 +1,62 @@
 import { FC } from "react";
-import NavButton from "../components/NavButton";
-import { FiMoon, FiChevronDown } from "react-icons/fi";
+import { FiCheckCircle } from "react-icons/fi";
 import Heading from "../components/Heading";
 import { P } from "../components/Paragraph";
 
 const Index: FC = ({ children }) => {
   return (
     <>
-      <header>
-        <NavButton icon><FiMoon /></NavButton>
-      </header>
-      <Heading h3>this is a heading lorem40</Heading>
-      <P>This is a paragraph Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium assumenda commodi deserunt dolores dolorum eligendi esse exercitationem, fugiat inventore itaque, molestiae, nam neque nesciunt pariatur quo repellendus sapiente ut!</P>
-      <NavButton>Hello world!&nbsp;&nbsp;<FiChevronDown /></NavButton>
+      <section className="intro">
+        <Heading h2 as="h1">
+          Hi, i'm Felix Tellmann
+        </Heading>
+        <P noMargin>I'm a freelancing web developer, writer and entrepreneur living in Cape Town. I teach people coding and have been building things for the web for the last 6 years.</P>
+      </section>
+      <section className="timeline">
+        <Heading h3 as="h2" mb={3}>
+          Timeline
+        </Heading>
+        <div className="timeline-group">
+          <Heading h4 as="h3">
+            2020
+          </Heading>
+          <ul>
+            <li>
+              <Heading h6 as="h4">
+                <FiCheckCircle style={{ margin: "0 12px 0 16px" }} />
+                Re-build my website
+              </Heading>
+              <P ml="44px">I'm excited to help grow the Next.js community and continue building the optimal workflow for front-end developers.</P>
+            </li>
+            <li>
+              <Heading h6 as="h4">
+                <FiCheckCircle style={{ margin: "0 12px 0 16px" }} />
+                Re-build my website
+              </Heading>
+              <P ml="44px">I'm excited to help grow the Next.js community and continue building the optimal workflow for front-end developers.</P>
+            </li>
+            <li>
+              <Heading h6 as="h4">
+                <FiCheckCircle style={{ margin: "0 12px 0 16px" }} />
+                Re-build my website
+              </Heading>
+              <P ml="44px">I'm excited to help grow the Next.js community and continue building the optimal workflow for front-end developers.</P>
+            </li>
+            <li>
+              <Heading h6 as="h4">
+                <FiCheckCircle style={{ margin: "0 12px 0 16px" }} />
+                Re-build my website
+              </Heading>
+              <P ml="44px">I'm excited to help grow the Next.js community and continue building the optimal workflow for front-end developers.</P>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <style jsx>{`
+        section {
+          margin: var(--gap-double) 0;
+        }
+      `}</style>
     </>
   );
 };
