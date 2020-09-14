@@ -7,6 +7,7 @@ import { makeDecorator } from '@storybook/addons';
 const ADDON_ID = "addon-sourcecode";
 const PANEL_ID = `${ADDON_ID}/panel`;
 const PANEL_ID2 = `${ADDON_ID}/panel2`;
+const PANEL_ID3 = `${ADDON_ID}/panel3`;
 
 let currentId
 // give a unique name for the panel
@@ -36,6 +37,10 @@ addons.register(ADDON_ID, (api) => {
   }
   fetchSources();
   /*setInterval(fetchSources, 1000)*/
+  addons.addPanel(PANEL_ID3, {
+    title: "Source Code",
+    render: ({ active, key }) => (active ? <StoryPanel getSource sources={sources} channel={addons.getChannel()} key={key} api={api} /> : null),
+  });
   addons.addPanel(PANEL_ID2, {
     title: "Source Code",
     render: ({ active, key }) => (active ? <StoryPanel sources={sources} channel={addons.getChannel()} key={key} api={api} /> : null),

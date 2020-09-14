@@ -43,6 +43,7 @@ interface StoryPanelProps {
   channel?: any
   sources?: any;
   getStory?: boolean
+  getSource?: boolean
 }
 
 interface SourceParams {
@@ -51,15 +52,21 @@ interface SourceParams {
   
 }
 
-export const StoryPanel: React.FC<StoryPanelProps> = ({ api, channel, sources, getStory }) => {
+export const StoryPanel: React.FC<StoryPanelProps> = ({ api, channel, sources, getStory, getSource }) => {
   
   const [state, setState] = useState<SourceParams & { currentLocation?: SourceBlock }>({
     source: "loading source...",
     locationsMap: {}
   });
   
+  const [sourceItem, setSourceItem] = useState<any>(null)
+  
   /* TODO Continue from here!!!*/
-  channel.on("storybook/docs/snippet-rendered", (id, newItem) => { console.log(id, newItem); });
+  channel.on("storybook/docs/snippet-rendered", (id, newItem) => {
+    /*console.log(id)*/
+    setSourceItem(newItem)
+  });
+  
   const story: Story | undefined = api.getCurrentStoryData() as Story;
   const selectedStoryRef = React.useRef<HTMLDivElement>(null);
   React.useEffect(() => {
@@ -76,7 +83,7 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api, channel, sources, g
       // @ts-ignore
       window.api = api;
       // @ts-ignore
-      console.log(api.getCurrentParameter()?.docs?.source);
+      /*console.log(sourceItem);*/
       
       let name = getStory ? fileName.replace(/\.(tsx|jsx|js|ts|mdx)$/, "").replace(/\\/g, "/") : fileName.replace(/\.stories\.(tsx|jsx|js|ts|mdx)$/, "")
           .replace(/\\/g, "/");
@@ -88,7 +95,7 @@ export const StoryPanel: React.FC<StoryPanelProps> = ({ api, channel, sources, g
                                   })
                                   ]
                               : undefined;
-      setState({ source: sources[name], locationsMap, currentLocation });
+      setState({ source: getSource ? sourceItem : sources[name], locationsMap, currentLocation });
       
     }
   }, [story ? story.id : null]);

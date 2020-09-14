@@ -5,14 +5,13 @@ const createCompiler = require('@storybook/addon-docs/mdx-compiler-plugin');
 module.exports = {
 
   addons: [
-    "@storybook/addon-links",/*
-    '@storybook/addon-docs/register',*/
+    "@storybook/addon-links",
     '@storybook/addon-docs',
     "@storybook/addon-essentials",
     '@storybook/addon-a11y',
     '@storybook/preset-scss',
-    '@storybook/addon-jest',/*
-    '@storybook/addon-storysource',*/
+    '@storybook/addon-jest',
+    '@storybook/addon-storysource',
     './addon-sourcecode/register',
   ],
   webpackFinal: async (baseConfig, options) => {
@@ -71,8 +70,6 @@ module.exports = {
     return newConfig;
   },
   stories: [
-    "../stories/**/*.stories.mdx",
-    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
     "../components/**/*.stories.@(js|jsx|ts|tsx|mdx)",
   ],
 

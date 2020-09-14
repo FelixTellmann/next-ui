@@ -1,10 +1,9 @@
 import { Meta, Story, ArgsTable, Canvas, Source } from '@storybook/addon-docs/blocks';
 import { Badge }  from './Badge';
-import { Button }  from './Button';
 import { linkTo } from '@storybook/addon-links';
 
 
-<Meta title="Badge" component={Badge} />
+<Meta title="FelixTellmann.com/Badge" component={Badge} />
 
 
 export const Template = (args) => <Badge {...args} />;
@@ -32,7 +31,7 @@ with unique URLs and isolated snapshot tests.
     <Badge status="negative">negative</Badge>
   </Story>
   <Story name="negative">
-    <Button status="negative">Button</Button>
+    <Badge status="negative">Button</Badge>
   </Story>
   <Story name="warning">
     <Badge status="warning">Warning</Badge>
