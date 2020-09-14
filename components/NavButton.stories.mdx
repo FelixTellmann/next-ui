@@ -1,0 +1,17 @@
+import { Meta, Story, ArgsTable, Canvas, Source } from "@storybook/addon-docs/blocks";
+import { NavButton } from "./NavButton";
+import { linkTo } from "@storybook/addon-links";
+
+<Meta title="FelixTellmann.com/NavButton" component={NavButton} />
+
+export const Template = (args) => <NavButton {...args} />;
+
+# NavButton
+
+Let's define a story for our `NavButton` component:
+
+<Canvas withToolbar>
+  <Story name="default">{(args) => <NavButton {...args}>Button</NavButton>}</Story>
+</Canvas>
+
+<ArgsTable story="default" />

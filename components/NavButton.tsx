@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Property } from "csstype";
 
 type ButtonProps = {
-  title: string | any;
+  icon?: boolean;
   onClick?: (event: MouseEvent) => void;
   href?: string;
   target?: string;
@@ -12,19 +12,18 @@ type ButtonProps = {
   style?: CSSProperties;
 };
 
-export const Button: FC<ButtonProps> = ({ title, onClick, href, target, primary, secondary, style = {}, ...props }) => {
-
+export const NavButton: FC<ButtonProps> = ({ children, icon, onClick, href, target, primary, secondary, style = {}, ...props }) => {
   return (
     <>
       {href ? (
         <Link href={href}>
           <a className="button" target={target} onClick={onClick} style={style}>
-            {title}
+            {children}
           </a>
         </Link>
       ) : (
         <button className="button" onClick={onClick} style={style}>
-          {title}
+          {children}
         </button>
       )}
       <style jsx>{`
@@ -36,17 +35,21 @@ export const Button: FC<ButtonProps> = ({ title, onClick, href, target, primary,
           align-items: center;
           justify-content: center;
           padding: 1.6rem;
+          border: 0;
           border-radius: 0.4rem;
           outline: none;
           background-color: transparent;
+          cursor: pointer;
           user-select: none;
           color: #1a202c;
+          font-family: inherit;
           font-size: 1.6rem;
           line-height: 1.2;
           white-space: nowrap;
           text-decoration: inherit;
           transition: all 250ms;
           appearance: none;
+          ${icon ? "padding: 0;" : ""}
 
           &:hover,
           &:focus,
@@ -59,4 +62,4 @@ export const Button: FC<ButtonProps> = ({ title, onClick, href, target, primary,
   );
 };
 
-export default Button;
+export default NavButton;

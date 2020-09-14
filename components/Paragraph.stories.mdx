@@ -1,0 +1,24 @@
+import { ArgsTable, Canvas, Meta, Story } from "@storybook/addon-docs/blocks";
+import { Paragraph } from "./Paragraph";
+
+<Meta title="FelixTellmann.com/Paragraph" component={Paragraph} />
+
+export const Template = (args) => <Paragraph {...args} />;
+
+# Paragraph
+
+Let's define a story for our `Paragraph` component:
+
+<Canvas withToolbar>
+  <Story name="default">
+    {(args) => (
+      <Paragraph {...args}>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut ipsam possimus vero. Aliquam enim et fugiat fugit impedit ipsam magni
+        nisi sunt! A accusamus at, debitis expedita facilis hic impedit in laboriosam molestiae officia optio perspiciatis quaerat quasi,
+        quidem ratione.
+      </Paragraph>
+    )}
+  </Story>
+</Canvas>
+
+<ArgsTable story="default" />

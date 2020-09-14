@@ -1,6 +1,9 @@
 import { CSSProperties, FC } from "react";
 
 type HeadingProps = {
+  center?: boolean;
+  noMargin?: boolean;
+  secondary?: boolean;
   h1?: boolean;
   h2?: boolean;
   h3?: boolean;
@@ -12,13 +15,16 @@ type HeadingProps = {
   className?: string;
 };
 
-export const Heading: FC<HeadingProps> = ({ children, className = "", h1 = true, h2, h3, h4, h5, h6, as, style = {}, ...props }) => {
+export const Heading: FC<HeadingProps> = ({ children, className = "", h1 = true, h2, h3, h4, h5, h6, as, center, noMargin, secondary, style = {}, ...props }) => {
   h6 && ((h1 = h2 = h3 = h4 = h5 = false), (className += " h6"), !as && (as = "h6"));
   h5 && ((h1 = h2 = h3 = h4 = h6 = false), (className += " h5"), !as && (as = "h5"));
   h4 && ((h1 = h2 = h3 = h5 = h6 = false), (className += " h4"), !as && (as = "h4"));
   h3 && ((h1 = h2 = h4 = h5 = h6 = false), (className += " h3"), !as && (as = "h3"));
   h2 && ((h1 = h3 = h4 = h5 = h6 = false), (className += " h2"), !as && (as = "h2"));
   h1 && ((h2 = h3 = h4 = h5 = h6 = false), (className += " h1"), !as && (as = "h1"));
+  center && (style["textAlign"] = "center");
+  noMargin && (style["margin"] = 0);
+  secondary && (style["color"] = "var(--color-secondary)");
 
   return (
     <>
@@ -56,21 +62,21 @@ export const Heading: FC<HeadingProps> = ({ children, className = "", h1 = true,
         .h1 {
           font-size: var(--h1);
           font-weight: 700;
-          line-height: 1.4;
+          line-height: 1.1;
           margin: 0 0 10px 0;
         }
 
         .h2 {
           font-size: var(--h2);
           font-weight: 700;
-          line-height: 1.4;
+          line-height: 1.2;
           margin: 0 0 10px 0;
         }
 
         .h3 {
           font-size: var(--h3);
           font-weight: 700;
-          line-height: 1.4;
+          line-height: 1.3;
           margin: 0 0 10px 0;
         }
 
