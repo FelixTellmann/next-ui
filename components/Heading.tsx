@@ -1,4 +1,5 @@
 import { CSSProperties, FC } from "react";
+import { Property } from "csstype";
 
 type HeadingProps = {
   center?: boolean;
@@ -11,11 +12,28 @@ type HeadingProps = {
   h5?: boolean;
   h6?: boolean;
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  weight?: Property.FontWeight;
   style?: CSSProperties;
   className?: string;
 };
 
-export const Heading: FC<HeadingProps> = ({ children, className = "", h1 = true, h2, h3, h4, h5, h6, as, center, noMargin, secondary, style = {}, ...props }) => {
+export const Heading: FC<HeadingProps> = ({
+  children,
+  className = "",
+  h1 = true,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  as,
+  center,
+  weight,
+  noMargin,
+  secondary,
+  style = {},
+  ...props
+}) => {
   h6 && ((h1 = h2 = h3 = h4 = h5 = false), (className += " h6"), !as && (as = "h6"));
   h5 && ((h1 = h2 = h3 = h4 = h6 = false), (className += " h5"), !as && (as = "h5"));
   h4 && ((h1 = h2 = h3 = h5 = h6 = false), (className += " h4"), !as && (as = "h4"));
@@ -23,6 +41,7 @@ export const Heading: FC<HeadingProps> = ({ children, className = "", h1 = true,
   h2 && ((h1 = h3 = h4 = h5 = h6 = false), (className += " h2"), !as && (as = "h2"));
   h1 && ((h2 = h3 = h4 = h5 = h6 = false), (className += " h1"), !as && (as = "h1"));
   center && (style["textAlign"] = "center");
+  weight && (style["fontWeight"] = weight);
   noMargin && (style["margin"] = 0);
   secondary && (style["color"] = "var(--color-secondary)");
 

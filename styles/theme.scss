@@ -20,6 +20,21 @@ html {
 body {
   font-family: var(--font);
   font-size: 1.6rem;
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
+.light-mode {
+  --color-text: #1c1c1c;
+  --color-background: #fff;
+  --color-button: #e2e8f0;
+  --color-button-secondary: #edf2f7;
+}
+.dark-mode {
+  --color-text: #fff;
+  --color-background: #171923;
+  --color-button: rgb(255, 255, 255, 0.16);
+  --color-button-secondary: rgba(255, 255, 255, 0.08);
 }
 
 :root {
@@ -47,14 +62,13 @@ body {
   /*================ Borders/Shadows ================*/
   --round-border-radius: 45% 52.5% 42.5% 42.5%;
   /*================ spacing ================*/
-  --max-width: 160rem;
+  --max-width: 96rem;
   --gap-tiny: 0.4rem;
   --gap-small: 0.8rem;
   --gap: 1.6rem;
-  --header-height: 108px;
-  @include responsive-min(830px) {
-    --header-height: 60px;
-  }
+  --gap-double: 3.2rem;
+
+  --header-height: 12.8rem;
 
   /*================ Z-Index ================*/
 

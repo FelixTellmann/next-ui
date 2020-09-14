@@ -1,0 +1,23 @@
+import { Meta, Story, ArgsTable, Canvas, Source } from "@storybook/addon-docs/blocks";
+import { Header } from "./Header";
+import { linkTo } from "@storybook/addon-links";
+
+<Meta title="FelixTellmann.com/Header/Header" component={Header} />
+
+export const Template = (args) => <Header {...args} />;
+
+# Header
+
+Let's define a story for our `Header` component:
+
+<Canvas withToolbar>
+  <Story name="default">
+    {(args) => (
+        <Header {...args}>
+          hello
+        </Header>
+    )}
+  </Story>
+</Canvas>
+
+<ArgsTable story="default" />

@@ -1,32 +1,34 @@
 import { CSSProperties, FC, MouseEvent } from "react";
 import Link from "next/link";
-import { Property } from "csstype";
+import { GenericThemeProps, parseGenericThemePropsToStyledJSX } from "../lib/GenericThemeProps";
 
-type ButtonProps = {
+type ButtonProps = GenericThemeProps & {
   icon?: boolean;
   onClick?: (event: MouseEvent) => void;
   href?: string;
   target?: string;
-  primary?: boolean;
   secondary?: boolean;
+  className?: string;
   style?: CSSProperties;
 };
 
-export const NavButton: FC<ButtonProps> = ({ children, icon, onClick, href, target, primary, secondary, style = {}, ...props }) => {
+export const NavButton: FC<ButtonProps> = ({ children, icon, onClick, href, target, secondary, className = "", style = {}, ...props }) => {
   return (
     <>
       {href ? (
         <Link href={href}>
-          <a className="button" target={target} onClick={onClick} style={style}>
+          <a className={`button ${className} ${secondary ? "secondary" : ""}`} target={target} onClick={onClick} style={style}>
             {children}
           </a>
         </Link>
       ) : (
-        <button className="button" onClick={onClick} style={style}>
+        <button className={`button ${className} ${secondary ? "secondary" : ""}`} onClick={onClick} style={style}>
           {children}
         </button>
       )}
       <style jsx>{`
+        @import "styles/mixins";
+
         .button {
           position: relative;
           min-width: 4rem;
@@ -41,7 +43,7 @@ export const NavButton: FC<ButtonProps> = ({ children, icon, onClick, href, targ
           background-color: transparent;
           cursor: pointer;
           user-select: none;
-          color: #1a202c;
+          color: var(--color-text);
           font-family: inherit;
           font-size: 1.6rem;
           line-height: 1.2;
@@ -54,8 +56,31 @@ export const NavButton: FC<ButtonProps> = ({ children, icon, onClick, href, targ
           &:hover,
           &:focus,
           &:active {
-            background-color: #e2e8f0;
+            background-color: var(--color-button);
           }
+
+          &.secondary {
+            color: var(--color-text);
+            background-color: var(--color-button-secondary);
+            &:hover,
+            &:focus,
+            &:active {
+              background-color: var(--color-button);
+            }
+          }
+        }
+
+        .button {
+          @include responsive-min(600px) {
+            ${parseGenericThemePropsToStyledJSX(props, "tablet-up")}
+          }
+          @include responsive-min(900px) {
+            ${parseGenericThemePropsToStyledJSX(props, "small-up")}
+          }
+          @include responsive-min(1200px) {
+            ${parseGenericThemePropsToStyledJSX(props, "desktop-up")}
+          }
+          ${parseGenericThemePropsToStyledJSX(props, "mobile-up")}
         }
       `}</style>
     </>
