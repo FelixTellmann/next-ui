@@ -1,0 +1,59 @@
+import { Meta, Story, ArgsTable, Canvas, Source } from "@storybook/addon-docs/blocks";
+import { Heading } from "./Heading";
+
+import { linkTo } from "@storybook/addon-links";
+
+<Meta title="FelixTellmann.com/Heading" component={Heading} />
+
+export const Template = (args) => <Heading {...args} />;
+
+# Heading
+
+Let's define a story for our `Heading` component:
+
+<Canvas withToolbar>
+  <Story name="default">
+    {(args) => (
+      <Heading {...args}>
+        This is our Sample Heading
+      </Heading>
+    )}
+  </Story>
+</Canvas>
+
+<ArgsTable story="default" />
+
+
+
+<Canvas isColumn>
+  <Story name="1">
+    <Heading h1>
+      This is our Sample Heading
+    </Heading>
+  </Story>
+  <Story name="2">
+    <Heading h2>
+      This is our Sample Heading
+    </Heading>
+  </Story>
+  <Story name="3">
+    <Heading h3>
+      This is our Sample Heading
+    </Heading>
+  </Story>
+  <Story name="4">
+    <Heading h4>
+      This is our Sample Heading
+    </Heading>
+  </Story>
+  <Story name="5">
+    <Heading h5>
+      This is our Sample Heading
+    </Heading>
+  </Story>
+  <Story name="6">
+    <Heading h6>
+      This is our Sample Heading
+    </Heading>
+  </Story>
+</Canvas>

@@ -1,5 +1,4 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
-import GoogleFonts from "next-google-fonts";
 
 class MyDocument extends Document {
   
@@ -12,7 +11,6 @@ class MyDocument extends Document {
     return (
         <Html lang="en">
           <Head>
-            <GoogleFonts href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" />
             <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png" />
             <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png" />
             <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png" />

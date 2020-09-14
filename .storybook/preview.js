@@ -1,7 +1,10 @@
 import { addParameters } from '@storybook/react';
 import { addDecorator } from '@storybook/react'; // <- or your view layer
 import withTester from './addon-sourcecode/register';
-;
+import '../styles/theme.scss';
+import './Inter.scss';
+
+
 
 import { withTests } from './withTests';
 

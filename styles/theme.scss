@@ -1,4 +1,8 @@
-*, *:before, *:after {
+@import "mixins";
+
+*,
+*:before,
+*:after {
   box-sizing: border-box;
 }
 
@@ -14,10 +18,9 @@ html {
 }
 
 body {
-  font-family: Inter, sans-serif;
+  font-family: var(--font);
   font-size: 1.6rem;
 }
-
 
 :root {
   /*================ color ================*/
@@ -32,8 +35,14 @@ body {
   --color-yellow: #fb0;
 
   /*================ typography ================*/
-  --font: 'Merriweather', -apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue, sans-serif;
-  --headings: heading, -apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue, sans-serif;
+  --font: Inter, -apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue, sans-serif;
+  --h1: 6.4rem;
+  --h2: 4.8rem;
+  --h3: 3.2rem;
+  --h4: 2.4rem;
+  --h5: 2rem;
+  --h6: 1.6rem;
+  --p: 1.6rem;
 
   /*================ Borders/Shadows ================*/
   --round-border-radius: 45% 52.5% 42.5% 42.5%;
