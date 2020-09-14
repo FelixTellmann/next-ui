@@ -8,7 +8,7 @@
 
 html {
   font-size: 10px;
-  min-width: 360px;
+  min-width: 320px;
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -27,14 +27,18 @@ body {
 .light-mode {
   --color-text: #1c1c1c;
   --color-background: #fff;
+  --color-header: #1a202c;
   --color-button: #e2e8f0;
   --color-button-secondary: #edf2f7;
+  --color-muted: #666;
 }
 .dark-mode {
   --color-text: #fff;
+  --color-header: #fff;
   --color-background: #171923;
   --color-button: rgb(255, 255, 255, 0.16);
   --color-button-secondary: rgba(255, 255, 255, 0.08);
+  --color-muted: #888;
 }
 
 :root {
@@ -58,6 +62,7 @@ body {
   --h5: 2rem;
   --h6: 1.6rem;
   --p: 1.6rem;
+  --small: 1.4rem;
 
   /*================ Borders/Shadows ================*/
   --round-border-radius: 45% 52.5% 42.5% 42.5%;

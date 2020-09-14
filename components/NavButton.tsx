@@ -43,7 +43,7 @@ export const NavButton: FC<ButtonProps> = ({ children, icon, onClick, href, targ
           background-color: transparent;
           cursor: pointer;
           user-select: none;
-          color: var(--color-text);
+          color: inherit;
           font-family: inherit;
           font-size: 1.6rem;
           line-height: 1.2;

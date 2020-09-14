@@ -1,20 +1,30 @@
 import { CSSProperties, FC } from "react";
+import { GenericThemeProps, parseGenericThemePropsToStyledJSX } from "../lib/GenericThemeProps";
 
-type ParagraphProps = {
+type ParagraphProps = GenericThemeProps & {
   center?: boolean;
+  small?: boolean;
   noMargin?: boolean;
-  secondary?: boolean
+  secondary?: boolean;
   className?: string;
   style?: CSSProperties;
 };
 
-export const Paragraph: FC<ParagraphProps> = ({ children, center, noMargin, secondary, style = {}, ...props }) => {
+export const Paragraph: FC<ParagraphProps> = ({ children, center, small, noMargin, secondary, style = {}, ...props }) => {
   return (
     <>
-      <p style={style} {...props}>
-        {children}
-      </p>
+      {small ? (
+        <p style={style} {...props}>
+          <small>{children}</small>
+        </p>
+      ) : (
+        <p style={style} {...props}>
+          {children}
+        </p>
+      )}
+
       <style jsx>{`
+        @import "styles/mixins";
         p {
           font-size: var(--p);
           line-height: 1.6;
@@ -23,6 +33,22 @@ export const Paragraph: FC<ParagraphProps> = ({ children, center, noMargin, seco
           ${noMargin ? "margin: 0;" : ""}
           ${center ? "text-align: center;" : ""}
           ${secondary ? "color: var(--color-secondary);" : ""}
+          small {
+            font-size: var(--small);
+          }
+        }
+
+        p {
+          @include responsive-min(600px) {
+            ${parseGenericThemePropsToStyledJSX(props, "tablet-up")}
+          }
+          @include responsive-min(900px) {
+            ${parseGenericThemePropsToStyledJSX(props, "small-up")}
+          }
+          @include responsive-min(1200px) {
+            ${parseGenericThemePropsToStyledJSX(props, "desktop-up")}
+          }
+          ${parseGenericThemePropsToStyledJSX(props, "mobile-up")}
         }
       `}</style>
     </>

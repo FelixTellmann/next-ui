@@ -23,6 +23,13 @@ export type GenericThemeProps = {
   bottom?: (Property.Bottom | multiplier) | (Property.Bottom | multiplier)[];
   left?: (Property.Left | multiplier) | (Property.Left | multiplier)[];
   pos?: Property.Position | Property.Position[];
+  color?: Property.Color;
+  bg?: Property.BackgroundColor | Property.BackgroundColor[];
+  w?: (Property.Width | multiplier) | (Property.Width | multiplier)[];
+  h?: (Property.Height | multiplier) | (Property.Height | multiplier)[];
+  size?: ((Property.Height & Property.Width) | multiplier) | ((Property.Height & Property.Width) | multiplier)[];
+  fs?: Property.FontSize | Property.FontSize[];
+  weight?: Property.FontWeight | Property.FontWeight[];
 };
 
 type BreakpointProps = "mobile-up" | "tablet-up" | "small-up" | "desktop-up";
@@ -80,13 +87,13 @@ function optimizeValue(input) {
   if (typeof input === "string" && input.match(/(px)$/)) {
     return +input.replace("px", "") / 10 + "rem";
   }
-  
+
   return input;
 }
 
 function filterCSS(key, val) {
   const value = optimizeValue(val);
-  
+
   switch (key) {
     case "p": {
       return `padding: ${value};`;
@@ -144,6 +151,27 @@ function filterCSS(key, val) {
     }
     case "left": {
       return `left: ${value};`;
+    }
+    case "color": {
+      return `color: ${value};`;
+    }
+    case "bg": {
+      return `background-color: ${value};`;
+    }
+    case "w": {
+      return `width: ${value};`;
+    }
+    case "h": {
+      return `height: ${value};`;
+    }
+    case "size": {
+      return `width: ${value};\n height: ${value};`;
+    }
+    case "fs": {
+      return `font-size: ${value};`;
+    }
+    case "weight": {
+      return `font-weight: ${value};`;
     }
   }
 }

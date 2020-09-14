@@ -1,4 +1,4 @@
-import { Component, FC } from "react";
+import { Component, FC, MouseEvent } from "react";
 import NavButton from "./NavButton";
 import Heading from "./Heading";
 import { FiMoon, FiSun } from "react-icons/fi";
@@ -23,10 +23,10 @@ type HeaderProps = {
     target?: string;
   }[];
   darkMode: boolean;
-  onThemeToggle: any;
+  onDarkModeToggle: (event: MouseEvent) => void;
 };
 
-export const Header: FC<HeaderProps> = ({ logo, nav, socialNav, darkMode, onThemeToggle }) => {
+export const Header: FC<HeaderProps> = ({ logo, nav, socialNav, darkMode, onDarkModeToggle }) => {
   return (
     <>
       <header className="header">
@@ -50,7 +50,7 @@ export const Header: FC<HeaderProps> = ({ logo, nav, socialNav, darkMode, onThem
           <div className="social-nav-group"></div>
           <div className="toggle-group">
             {darkMode ? (
-              <NavButton icon secondary onClick={onThemeToggle} ml="var(--gap)">
+              <NavButton icon secondary onClick={onDarkModeToggle} ml="var(--gap)">
                 <svg
                   stroke="currentColor"
                   fill="none"
@@ -75,7 +75,7 @@ export const Header: FC<HeaderProps> = ({ logo, nav, socialNav, darkMode, onThem
                 </svg>
               </NavButton>
             ) : (
-              <NavButton icon secondary onClick={onThemeToggle} ml="var(--gap)">
+              <NavButton icon secondary onClick={onDarkModeToggle} ml="var(--gap)">
                 <svg
                   stroke="currentColor"
                   fill="none"
@@ -97,6 +97,12 @@ export const Header: FC<HeaderProps> = ({ logo, nav, socialNav, darkMode, onThem
       </header>
 
       <style jsx>{`
+        .header {
+          position: sticky;
+          top: 0;
+          backdrop-filter: saturate(180%) blur(2rem);
+          color: var(--color-header);
+        }
         .nav {
           width: 100%;
           max-width: var(--max-width);
