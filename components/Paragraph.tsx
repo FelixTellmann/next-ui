@@ -30,6 +30,7 @@ export const Paragraph: FC<ParagraphProps> = ({ children, center, small, noMargi
           line-height: 1.6;
           margin: 0 0 15px 0;
           word-break: break-word;
+          color: var(--color-text);
           ${noMargin ? "margin: 0;" : ""}
           ${center ? "text-align: center;" : ""}
           ${secondary ? "color: var(--color-secondary);" : ""}

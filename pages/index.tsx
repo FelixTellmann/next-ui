@@ -2,6 +2,7 @@ import { FC } from "react";
 import { FiCheckCircle } from "react-icons/fi";
 import Heading from "../components/Heading";
 import { P } from "../components/Paragraph";
+import CheckIcon from "public/IconCheckCircle.svg";
 
 const Index: FC = ({ children }) => {
   return (
@@ -22,29 +23,8 @@ const Index: FC = ({ children }) => {
           </Heading>
           <ul>
             <li>
-              <Heading h6 as="h4">
-                <FiCheckCircle style={{ margin: "0 12px 0 16px" }} />
-                Re-build my website
-              </Heading>
-              <P ml="44px">I'm excited to help grow the Next.js community and continue building the optimal workflow for front-end developers.</P>
-            </li>
-            <li>
-              <Heading h6 as="h4">
-                <FiCheckCircle style={{ margin: "0 12px 0 16px" }} />
-                Re-build my website
-              </Heading>
-              <P ml="44px">I'm excited to help grow the Next.js community and continue building the optimal workflow for front-end developers.</P>
-            </li>
-            <li>
-              <Heading h6 as="h4">
-                <FiCheckCircle style={{ margin: "0 12px 0 16px" }} />
-                Re-build my website
-              </Heading>
-              <P ml="44px">I'm excited to help grow the Next.js community and continue building the optimal workflow for front-end developers.</P>
-            </li>
-            <li>
-              <Heading h6 as="h4">
-                <FiCheckCircle style={{ margin: "0 12px 0 16px" }} />
+              <Heading h6 as="h4" mb={1}>
+                <CheckIcon style={{ margin: "0 12px 0 16px", color: "00BFA5" }} />
                 Re-build my website
               </Heading>
               <P ml="44px">I'm excited to help grow the Next.js community and continue building the optimal workflow for front-end developers.</P>
