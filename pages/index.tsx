@@ -119,13 +119,13 @@ const Index: FC = ({ children }) => {
 
   return (
     <>
-      <section className="intro">
+      <section id="home">
         <Heading h2 as="h1">
           Hi, i'm Felix Tellmann
         </Heading>
         <P noMargin>I'm a freelancing web developer, writer and entrepreneur living in Cape Town. I teach people coding and have been building things for the web for the last 6 years.</P>
       </section>
-      <section>
+      <section id="timeline">
         <Heading h3 as="h2" mb={3}>
           Timeline
         </Heading>
@@ -140,14 +140,6 @@ const Index: FC = ({ children }) => {
           </NavButton>
         )}
       </section>
-      <style jsx>{`
-        section {
-          margin: var(--gap-double) 0;
-          :first-of-type {
-            margin: 0 0 var(--gap-double);
-          }
-        }
-      `}</style>
     </>
   );
 };

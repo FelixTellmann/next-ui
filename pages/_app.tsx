@@ -20,7 +20,7 @@ export const _App: FC<AppProps> = ({ pageProps, Component }) => {
   };
 
   const NAV = [
-    { title: "Home", subtitle: "Hi", href: "#" },
+    { title: "Home", subtitle: "Hi", href: "/" },
     { title: "Blog", subtitle: "All about coding", href: "#" },
     { title: "About", subtitle: "Get to know me", href: "#" },
   ];
@@ -45,17 +45,6 @@ export const _App: FC<AppProps> = ({ pageProps, Component }) => {
         <Component {...pageProps} />
       </main>
       <Footer footerNav={FOOTER_NAV} socialNav={SOCIAL_NAV} darkMode={darkMode.value} onDarkModeToggle={darkMode.toggle} />
-      <style jsx>{`
-        main {
-          min-height: calc(100vh - 12rem);
-          width: 100%;
-          max-width: var(--max-width-content);
-          display: flex;
-          flex-direction: column;
-          margin: auto;
-          padding: 0 var(--gap-double);
-        }
-      `}</style>
     </>
   );
 };

@@ -22,11 +22,27 @@ body {
   font-size: var(--p);
 }
 
+main {
+  min-height: calc(100vh - 12rem);
+  width: 100%;
+  max-width: var(--max-width-content);
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 0 var(--gap-double);
+  section {
+    margin: var(--gap-double) 0;
+    &:first-of-type {
+      margin: 0 0 var(--gap-double);
+    }
+  }
+}
+
 hr {
   width: 100%;
   opacity: 0.6;
   margin-top: var(--gap-double);
   margin-bottom: var(--gap-double);
   border: 0;
-  border-bottom: 0.01rem var(--color-button) solid ;
+  border-bottom: 0.01rem var(--color-button) solid;
 }
