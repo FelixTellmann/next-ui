@@ -1,13 +1,15 @@
 @import "mixins";
 
-
 .light-mode {
   --color-body: #1c1c1c;
-  --color-text: #2D3748;
+  --color-text: #2d3748;
   --color-background: #fff;
   --color-header: #1a202c;
   --color-button: #e2e8f0;
   --color-button-secondary: #edf2f7;
+  --color-input: var(--color-background);
+  --color-input-border: var(--color-button);
+  --color-input-border-hover: #cbd5e0;
   --color-muted: #666;
 }
 .dark-mode {
@@ -17,6 +19,9 @@
   --color-background: #171923;
   --color-button: rgb(255, 255, 255, 0.16);
   --color-button-secondary: rgba(255, 255, 255, 0.08);
+  --color-input-border: rgba(255, 255, 255, 0.04);
+  --color-input-border-hover: var(--color-button-secondary);
+  --color-input: var(--color-button-secondary);
   --color-muted: #888;
 }
 
@@ -50,7 +55,7 @@
   }
 
   /*================ Borders/Shadows ================*/
-  --round-border-radius: 45% 52.5% 42.5% 42.5%;
+  --border-radius: 0.4rem;
   /*================ spacing ================*/
   --max-width: 96rem;
   --max-width-content: 76.4rem;
@@ -59,7 +64,7 @@
   --gap: 1.6rem;
   --gap-double: 3.2rem;
 
-  --header-height: 12.8rem;
+  --header-height: 10.4rem;
 
   /*================ Z-Index ================*/
 

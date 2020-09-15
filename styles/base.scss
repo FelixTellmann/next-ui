@@ -23,14 +23,14 @@ body {
 }
 
 main {
-  min-height: calc(100vh - 12rem);
+  min-height: calc(100vh - 12rem - var(--header-height) - var(--gap-double) * 2);
   width: 100%;
   max-width: var(--max-width-content);
   display: flex;
   flex-direction: column;
   margin: auto;
   padding: 0 var(--gap-double);
-  section {
+  > section {
     margin: var(--gap-double) 0;
     &:first-of-type {
       margin: 0 0 var(--gap-double);

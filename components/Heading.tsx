@@ -95,9 +95,9 @@ export const Heading: FC<HeadingProps> = ({ children, className = "", h1 = true,
 
         :global(.h5) {
           font-size: var(--h5);
-          font-weight: 700;
-          line-height: 1.4;
-          margin: 0 0 10px 0;
+          font-weight: 600;
+          line-height: 1.3;
+          margin: 0 0 8px 0;
         }
 
         :global(.h6) {
@@ -107,8 +107,6 @@ export const Heading: FC<HeadingProps> = ({ children, className = "", h1 = true,
           margin: 0 0 10px 0;
           display: flex;
           align-items: center;
-          white-space: nowrap;
-          word-break: keep-all;
         }
 
         .h1,

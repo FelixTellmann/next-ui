@@ -16,13 +16,13 @@ export const _App: FC<AppProps> = ({ pageProps, Component }) => {
   const LOGO = {
     title: "Felix Tellmann",
     img: { src: "", alt: "Felix Tellmann Logo" },
-    href: "#",
+    href: "/",
   };
 
   const NAV = [
     { title: "Home", subtitle: "Hi", href: "/" },
-    { title: "Blog", subtitle: "All about coding", href: "#" },
-    { title: "About", subtitle: "Get to know me", href: "#" },
+    { title: "Blog", subtitle: "All about coding", href: "/blog" },
+    { title: "About", subtitle: "Get to know me", href: "/about" },
   ];
   const FOOTER_NAV = [
     { title: "/uses", href: "/uses" },

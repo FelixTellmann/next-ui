@@ -4,6 +4,7 @@ import Heading from "../components/Heading";
 import { P } from "../components/Paragraph";
 import Timeline from "../components/Timeline";
 import NavButton from "../components/NavButton";
+import Link from "next/link";
 
 const Index: FC = ({ children }) => {
   const [showFullTimeline, toggleShowFullTimeline] = useState<boolean>(false);
@@ -124,6 +125,45 @@ const Index: FC = ({ children }) => {
           Hi, i'm Felix Tellmann
         </Heading>
         <P noMargin>I'm a freelancing web developer, writer and entrepreneur living in Cape Town. I teach people coding and have been building things for the web for the last 6 years.</P>
+      </section>
+      <section id="blog-preview">
+        {/* TODO: Dynamic Blog injection for homepage */}
+        <Heading h3 as="h2" mb={3}>
+          Popular Articles
+        </Heading>
+        <Link href="#">
+          <a>
+            <Heading h5 as="h3">
+              Blog title Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus ipsa necessitatibus voluptas?
+            </Heading>
+            <P mb={4}>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est ipsum obcaecati officia quas ut! Ab amet aut consequuntur corporis culpa error et facilis, inventore laborum laudantium
+              nulla rem sit voluptates.
+            </P>
+          </a>
+        </Link>
+        <Link href="#">
+          <a>
+            <Heading h5 as="h3">
+              Blog title Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus ipsa necessitatibus voluptas?
+            </Heading>
+            <P mb={4}>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est ipsum obcaecati officia quas ut! Ab amet aut consequuntur corporis culpa error et facilis, inventore laborum laudantium
+              nulla rem sit voluptates.
+            </P>
+          </a>
+        </Link>
+        <Link href="#">
+          <a>
+            <Heading h5 as="h3">
+              Blog title Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus ipsa necessitatibus voluptas?
+            </Heading>
+            <P>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est ipsum obcaecati officia quas ut! Ab amet aut consequuntur corporis culpa error et facilis, inventore laborum laudantium
+              nulla rem sit voluptates.
+            </P>
+          </a>
+        </Link>
       </section>
       <section id="timeline">
         <Heading h3 as="h2" mb={3}>

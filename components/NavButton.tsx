@@ -38,7 +38,7 @@ export const NavButton: FC<ButtonProps> = ({ children, icon, onClick, href, targ
           justify-content: center;
           padding: 1.6rem;
           border: 0;
-          border-radius: 0.4rem;
+          border-radius: var(--border-radius);
           outline: none;
           background-color: transparent;
           cursor: pointer;
@@ -60,7 +60,6 @@ export const NavButton: FC<ButtonProps> = ({ children, icon, onClick, href, targ
           }
 
           &.secondary {
-            color: var(--color-text);
             background-color: var(--color-button-secondary);
             &:hover,
             &:focus,
