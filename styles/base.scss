@@ -1,0 +1,32 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  font-size: 10px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-body);
+  font-family: var(--font);
+  font-size: var(--p);
+}
+
+hr {
+  width: 100%;
+  opacity: 0.6;
+  margin-top: var(--gap-double);
+  margin-bottom: var(--gap-double);
+  border: 0;
+  border-bottom: 0.01rem var(--color-button) solid ;
+}

@@ -1,28 +1,5 @@
 @import "mixins";
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
-html {
-  font-size: 10px;
-  min-width: 320px;
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-
-body {
-  font-family: var(--font);
-  font-size: 1.6rem;
-  background: var(--color-background);
-  color: var(--color-body);
-}
 
 .light-mode {
   --color-body: #1c1c1c;
@@ -57,20 +34,26 @@ body {
 
   /*================ typography ================*/
   --font: Inter, -apple-system, BlinkMacSystemFont, San Francisco, Helvetica Neue, sans-serif;
+
   --h1: 6.4rem;
-  --h2: 4.8rem;
-  --h3: 3.6rem;
-  --h4: 2.4rem;
+  --h2: 3.6rem;
+  --h3: 3rem;
+  --h4: 2rem;
   --h5: 2rem;
   --h6: 1.6rem;
   --p: 1.6rem;
   --small: 1.4rem;
+  @include responsive-min(600px) {
+    --h2: 4.8rem;
+    --h3: 3.6rem;
+    --h4: 2.4rem;
+  }
 
   /*================ Borders/Shadows ================*/
   --round-border-radius: 45% 52.5% 42.5% 42.5%;
   /*================ spacing ================*/
   --max-width: 96rem;
-  --max-width-content: 70rem;
+  --max-width-content: 76.4rem;
   --gap-tiny: 0.4rem;
   --gap-small: 0.8rem;
   --gap: 1.6rem;

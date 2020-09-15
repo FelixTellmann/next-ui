@@ -30,6 +30,7 @@ export type GenericThemeProps = {
   size?: ((Property.Height & Property.Width) | multiplier) | ((Property.Height & Property.Width) | multiplier)[];
   fs?: Property.FontSize | Property.FontSize[];
   weight?: Property.FontWeight | Property.FontWeight[];
+  d?: Property.Display | Property.Display[]
 };
 
 type BreakpointProps = "mobile-up" | "tablet-up" | "small-up" | "desktop-up";
@@ -172,6 +173,9 @@ function filterCSS(key, val) {
     }
     case "weight": {
       return `font-weight: ${value};`;
+    }
+    case "d": {
+      return `display: ${value};`;
     }
   }
 }

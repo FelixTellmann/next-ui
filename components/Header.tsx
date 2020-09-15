@@ -42,7 +42,7 @@ export const Header: FC<HeaderProps> = ({ logo, nav, socialNav, darkMode, onDark
           </div>
           <div className="nav-group">
             {nav.map(({ title, subtitle, href, target }, key) => (
-              <NavButton key={key} href={href} target={target} mx={[1, 2]} px={[1, 3]}>
+              <NavButton key={key} href={href} target={target} mx={["2px", 2]} px={[2, 3]}>
                 {title}
               </NavButton>
             ))}
@@ -74,7 +74,7 @@ export const Header: FC<HeaderProps> = ({ logo, nav, socialNav, darkMode, onDark
                 </svg>
               </NavButton>
             ) : (
-              <NavButton icon secondary onClick={onDarkModeToggle} ml="var(--gap)">
+              <NavButton icon secondary onClick={onDarkModeToggle} ml={[1 , 3]}>
                 <svg
                   stroke="currentColor"
                   fill="none"
@@ -96,13 +96,16 @@ export const Header: FC<HeaderProps> = ({ logo, nav, socialNav, darkMode, onDark
       </header>
 
       <style jsx>{`
+        @import "styles/mixins";
         .header {
           position: sticky;
           top: 0;
           backdrop-filter: saturate(180%) blur(2rem);
           color: var(--color-header);
-          margin-top: 3.2rem;
           margin-bottom: 3.2rem;
+          @include responsive-min(600px) {
+            margin-top: 3.2rem;
+          }
         }
         :global(.dark-mode .header) {
           backdrop-filter: saturate(100%) blur(2rem);
@@ -116,7 +119,7 @@ export const Header: FC<HeaderProps> = ({ logo, nav, socialNav, darkMode, onDark
           align-items: center;
           justify-content: space-between;
           margin: auto;
-          padding: var(--gap);
+          padding: var(--gap-double);
         }
 
         .logo-group {

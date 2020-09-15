@@ -6,6 +6,8 @@ import { FiGithub, FiFacebook, FiTwitter, FiMail } from "react-icons/fi";
 import useDarkMode from "use-dark-mode";
 import "styles/reset.scss";
 import "styles/theme.scss";
+import 'styles/base.scss';
+
 import Footer from "../components/Footer";
 
 export const _App: FC<AppProps> = ({ pageProps, Component }) => {
@@ -51,7 +53,7 @@ export const _App: FC<AppProps> = ({ pageProps, Component }) => {
           display: flex;
           flex-direction: column;
           margin: auto;
-          padding: var(--gap);
+          padding: 0 var(--gap-double);
         }
       `}</style>
     </>

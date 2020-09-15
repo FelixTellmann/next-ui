@@ -34,7 +34,7 @@ export const Footer: FC<FooterProps> = ({ footerNav, socialNav, darkMode, onDark
           </div>
           <div className="footer-nav-group">
             {footerNav.map(({ title, href, target }, key) => (
-              <P small noMargin px={2} key={key}>
+              <P small px={2} key={key}>
                 <Link href={href} title={title} target={target}>{title}</Link>
               </P>
             ))}
@@ -43,7 +43,7 @@ export const Footer: FC<FooterProps> = ({ footerNav, socialNav, darkMode, onDark
       </footer>
       <style jsx>{`
         .nav {
-          color: var(--color-muted);
+          color: var(--color-text);
           width: 100%;
           max-width: var(--max-width);
           display: flex;

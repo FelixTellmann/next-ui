@@ -8,6 +8,7 @@ type ParagraphProps = GenericThemeProps & {
   secondary?: boolean;
   className?: string;
   style?: CSSProperties;
+  dangerouslySetInnerHTML?: { __html: string };
 };
 
 export const Paragraph: FC<ParagraphProps> = ({ children, center, small, noMargin, secondary, style = {}, ...props }) => {
