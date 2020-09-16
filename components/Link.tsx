@@ -24,7 +24,7 @@ export const Link: FC<LinkProps> = ({ title, href, target, onClick, children }) 
           &:hover,
           &:focus,
           &:active {
-            filter: brightness(0);
+            filter: saturate(5);
           }
         }
       `}</style>

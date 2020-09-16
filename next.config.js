@@ -1,6 +1,8 @@
 const withPlugins = require("next-compose-plugins");
 const optimizedImages = require("next-optimized-images");
+const MDX = require("@next/mdx");
 const SCSS = require("@zeit/next-sass");
+const MdxEnchanged = require('next-mdx-enhanced');
 const path = require("path");
 const fs = require("fs");
 
@@ -10,18 +12,25 @@ module.exports = withPlugins(
       optimizedImages,
       {
         optimizeImagesInDev: true,
-        /* config for next-optimized-images */
       },
     ],
     [SCSS],
+    process.env.NODE_ENV === "development" ? [MdxEnchanged({
+      layoutPath: 'layouts',
+      defaultLayout: true,
+      fileExtensions: ['mdx'],
+      remarkPlugins: [],
+      rehypePlugins: [],
+      usesSrc: false,
+      extendFrontMatter: {
+        process: (mdxContent) => ({
+          wordCount: mdxContent.split(/\s+/gu).length,
+        })
+      }
+    })] : [MDX],
   ],
   {
-    /*  entry: './pages/index.tsx',
-  output: {
-    path: path.resolve(__dirname, 'dist/snippets'),
-    filename: 'my-first-webpack.bundle.js'
-  },*/
-    webpack(config, { defaultLoaders }) {
+    webpack(config, { isServer }) {
       config.module.rules.push(
         {
           test: /\.(png|eot|otf|ttf|woff|woff2)$/,
@@ -51,7 +60,7 @@ module.exports = withPlugins(
           },
         }
       );
-      config.resolve.extensions = [".ts", ".js", ".jsx", ".tsx", ".svg", ".scss", "*.mdx"];
+      config.resolve.extensions = [".ts", ".js", ".jsx", ".tsx", ".svg", ".scss", ".mdx"];
       return config;
     },
   }
