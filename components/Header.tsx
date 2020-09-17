@@ -2,6 +2,7 @@ import { Component, FC, MouseEvent } from "react";
 import NavButton from "./NavButton";
 import Heading from "./Heading";
 import { FiMoon, FiSun } from "react-icons/fi";
+import { ImSun } from "react-icons/im";
 import Link from "next/link";
 
 type HeaderProps = {
@@ -50,7 +51,7 @@ export const Header: FC<HeaderProps> = ({ logo, nav, socialNav, darkMode, onDark
           <div className="toggle-group">
             {darkMode ? (
               <NavButton icon secondary onClick={onDarkModeToggle} ml="var(--gap)">
-                <FiSun style={{ filter: `drop-shadow( 0 0 3px rgb(240, 255, 50, .85))` }}/>
+                <ImSun style={{ filter: `drop-shadow( 0 0 3px rgb(240, 255, 50, .85))` }}/>
               </NavButton>
             ) : (
               <NavButton icon secondary onClick={onDarkModeToggle} ml={[1 , 3]}>

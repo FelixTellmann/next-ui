@@ -11,6 +11,7 @@
   --color-input-border: var(--color-button);
   --color-input-border-hover: #cbd5e0;
   --color-muted: #666;
+  transition: color 0.2s ease-out, background 0.2s ease-out
 }
 .dark-mode {
   --color-body: #fff;
@@ -23,6 +24,8 @@
   --color-input-border-hover: var(--color-button-secondary);
   --color-input: var(--color-button-secondary);
   --color-muted: #888;
+
+  transition: color 0.2s ease-out, background 0.2s ease-out
 }
 
 :root {

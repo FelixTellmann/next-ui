@@ -3,10 +3,12 @@ import React, { FC } from "react";
 import GoogleFonts from "next-google-fonts";
 import Header from "../components/Header";
 import { FiGithub, FiFacebook, FiTwitter, FiMail } from "react-icons/fi";
+
 import useDarkMode from "use-dark-mode";
 import "styles/reset.scss";
 import "styles/theme.scss";
 import 'styles/base.scss';
+import 'styles/prism.scss';
 
 import Footer from "../components/Footer";
 
