@@ -1,10 +1,10 @@
-import { Property } from "csstype";
-import { type } from "os";
+import {Property} from "csstype";
+
 
 type multiplier = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 
 export type GenericThemeProps = {
-  p?: (Property.Padding | multiplier) | (Property.Padding | multiplier)[];
+  p?: (Property.Padding | multiplier) | any[]
   pt?: (Property.PaddingTop | multiplier) | (Property.PaddingTop | multiplier)[];
   pr?: (Property.PaddingRight | multiplier) | (Property.PaddingRight | multiplier)[];
   pb?: (Property.PaddingBottom | multiplier) | (Property.PaddingBottom | multiplier)[];

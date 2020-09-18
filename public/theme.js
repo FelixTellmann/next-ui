@@ -1,46 +1,52 @@
-var themeConfig = {
-  light: {
-    "--color-text": "#1c1c1c",
-    "--color-background": "#fff",
-    "--color-button": "#e2e8f0",
-    "--color-button-secondary": "#edf2f7"
-  },
-  dark: {
-    "--color-text": "#fff",
-    "--color-background": "#171923",
-    "--color-button": "rgb(255, 255, 255, 0.16)",
-    "--color-button-secondary": "rgba(255, 255, 255, 0.08)"
-  },
-};
+// Insert this script in your index.html right after the <body> tag.
+// This will help to prevent a flash if dark mode is the default.
 
-export var setThemeConfig = (inputTheme) => {
-  if (inputTheme === "dark") {
-    const theme = themeConfig.dark;
-    for (let key in theme) {
-      console.log(key, theme[key]);
-      setCSSVar(key, theme[key]);
+(function () {
+  // Change these if you use something different in your hook.
+  var storageKey = 'colorTheme';
+  var classNames = ['light-theme', 'dark-theme'];
+
+  function setClassOnDocumentBody(colorTheme) {
+    var theme = 'light-theme';
+    if (colorTheme === false) {
+      // eslint-disable-next-line prefer-destructuring
+      theme = classNames[0];
     }
-    localStorage.setItem("theme", inputTheme);
-  } else {
-    const theme = themeConfig.light;
-    for (let key in theme) {
-      console.log(key, theme[key]);
-      setCSSVar(key, theme[key]);
+    if (colorTheme === true) {
+      // eslint-disable-next-line prefer-destructuring
+      theme = classNames[1];
     }
-    localStorage.setItem("theme", inputTheme);
+    if (typeof colorTheme === 'string') {
+      theme = colorTheme;
+    }
+    for (var i = 0; i < classNames.length; i++) {
+      document.body.classList.remove(classNames[i]);
+    }
+    document.body.classList.add(theme);
   }
-};
 
-function setCSSVar(property, color) {
-  document.documentElement.style.setProperty(property, color);
-}
-
-function getTheme() {
+  var preferDarkQuery = '(prefers-color-scheme: dark)';
+  var mql = window.matchMedia(preferDarkQuery);
+  var supportsColorSchemeQuery = mql.media === preferDarkQuery;
+  var localStorageTheme = null;
   try {
-    setThemeConfig(localStorage.getItem("theme") || "light");
-  } catch (err) {
-    console.log(new Error("accessing theme has been denied"));
+    localStorageTheme = localStorage.getItem(storageKey);
+  } catch (err) {}
+  var localStorageExists = localStorageTheme !== null;
+  if (localStorageExists) {
+    localStorageTheme = JSON.parse(localStorageTheme);
   }
-}
-
-getTheme();
+  // Determine the source of truth
+  if (localStorageExists) {
+    // source of truth from localStorage
+    setClassOnDocumentBody(localStorageTheme);
+  } else if (supportsColorSchemeQuery) {
+    // source of truth from system
+    setClassOnDocumentBody(mql.matches);
+    localStorage.setItem(storageKey, JSON.stringify('dark-theme'));
+  } else {
+    // source of truth from document.body
+    var iscolorTheme = document.body.classList.contains('dark-theme');
+    localStorage.setItem(storageKey, iscolorTheme ? JSON.stringify('dark-theme') : JSON.stringify('light-theme'));
+  }
+}());
